@@ -29,7 +29,7 @@ pipeline {
         
         stage ('Docker Push') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]){
+                withCredentials([usernamePassword(credentialsId: '0abc1b4f-2c19-4f22-be49-f27b8903d2a9', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]){
                     bat 'docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}'
                     bat 'docker tag my-api-rest:1.0 elizabeth00/my-api-rest:latest'
                     bat 'docker push elizabeth00/my-api-rest:latest'
