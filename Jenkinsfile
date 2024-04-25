@@ -4,6 +4,8 @@ pipeline {
     environment {
         NODEJS_HOME = tool name: 'node'
         PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+        DOCKERHUB_USERNAME = credentials('elizabeth00')
+        DOCKERHUB_PASSWORD = credentials('lichis140500')
     }
     
     stages {
@@ -29,8 +31,8 @@ pipeline {
         
         stage ('Docker Push') {
             steps {
-                withCredentials([usernamePassword(passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]){
-                    bat 'docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}'
+                withCredentials([usernamePassword(credentialsId: DOCKERHUB_USERNAME, passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]){
+                    bat 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
                     bat 'docker tag my-api-rest:1.0 elizabeth00/my-api-rest:latest'
                     bat 'docker push elizabeth00/my-api-rest:latest'
                     bat 'docker logout'
