@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Copiando repositorio') {
             steps {
-                git branch: 'main', credentialsId: '4414f197-dc27-4d50-ab20-5a369ab63d01', url: 'https://github.com/ElizabethTV/CI-CD-API'
+                git branch: 'main',  url: 'https://github.com/ElizabethTV/CI-CD-API'
             }
         }
         
