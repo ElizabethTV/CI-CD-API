@@ -4,8 +4,6 @@ pipeline {
     environment {
         NODEJS_HOME = tool name: 'node'
         PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
-        DOCKERHUB_USERNAME = credentials('elizabeth00')
-        DOCKERHUB_PASSWORD = credentials('lichis140500')
     }
     
     stages {
