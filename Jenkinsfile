@@ -31,7 +31,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]){
                     bat 'docker login -u elizabeth00 -p lichis140500'
-                    bat 'docker tag my-rest-api:1.0 elizabeth00/my-rest-api:latest'
+                    bat 'docker tag my-rest-api elizabeth00/my-rest-api:latest'
                     bat 'docker push elizabeth00/my-rest-api:latest'
                     bat 'docker logout'
                 }
